@@ -78,7 +78,8 @@ public class CarController {
         mailService.sendInquiry(subject, body, data.getEmail());
 
         // Confirmation email to customer
-        mailService.sendConfirmation(data.getEmail(), carName);
+        mailService.sendConfirmation(data.getEmail(), data.getCarName(), data.getName());
+
 
         return ResponseEntity.ok("Inquiry sent successfully");
     }
