@@ -73,13 +73,16 @@ public class CarController {
                 data.getName(), data.getEmail(), data.getMessage()
         );
 
-        mailService.sendInquiry(subject, body);
+        // ✅ Now includes replyTo (user's email)
+        mailService.sendInquiry(subject, body, data.getEmail());
+
         return ResponseEntity.ok("Inquiry sent successfully");
     }
 
+
     @GetMapping("/test-email")
     public ResponseEntity<String> testEmail() {
-        mailService.sendInquiry("Test Email from Pete's Cars", "This is a test message from Spring Boot via Brevo SMTP.");
+        mailService.sendInquiry("Test Subject", "Body", "replyto@example.com");
         return ResponseEntity.ok("Email sent.");
     }
 
