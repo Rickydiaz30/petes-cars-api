@@ -67,17 +67,22 @@ public class CarController {
 
     @PostMapping("/inquiry")
     public ResponseEntity<?> sendInquiry(@RequestBody Inquiry data) {
-        String subject = "New Inquiry: " + data.getCarName();
+        String carName = data.getCarName();
+
+        // Email to you
+        String subject = "New Inquiry: " + carName;
         String body = String.format(
                 "Name: %s\nEmail: %s\nMessage:\n%s",
                 data.getName(), data.getEmail(), data.getMessage()
         );
-
-        // ✅ Now includes replyTo (user's email)
         mailService.sendInquiry(subject, body, data.getEmail());
+
+        // Confirmation email to customer
+        mailService.sendConfirmation(data.getEmail(), carName);
 
         return ResponseEntity.ok("Inquiry sent successfully");
     }
+
 
 
     @GetMapping("/test-email")

@@ -22,5 +22,19 @@ public class MailService {
 
         mailSender.send(message);
     }
+
+    public void sendConfirmation(String toEmail, String carName) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("8b10da001@smtp-brevo.com"); // Brevo sender
+        message.setTo(toEmail);                      // send to the customer
+        message.setSubject("We received your inquiry about the " + carName);
+        message.setText(
+                "Hi,\n\nThank you for your interest in the " + carName +
+                        ". We'll get back to you shortly.\n\n– Pete's Cars"
+        );
+
+        mailSender.send(message);
+    }
+
 }
 
