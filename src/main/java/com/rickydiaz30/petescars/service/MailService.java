@@ -25,7 +25,7 @@ public class MailService {
 
     public void sendConfirmation(String toEmail, String carName, String customerName) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("8b10da001@smtp-brevo.com");
+        message.setFrom("diazricky28@gmail.com");
         message.setTo(toEmail);
         message.setSubject("Thanks for your interest in the " + carName);
         message.setText(
