@@ -23,18 +23,27 @@ public class MailService {
         mailSender.send(message);
     }
 
-    public void sendConfirmation(String toEmail, String carName) {
+    public void sendConfirmation(String toEmail, String carName, String customerName) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("8b10da001@smtp-brevo.com"); // Brevo sender
-        message.setTo(toEmail);                      // send to the customer
-        message.setSubject("We received your inquiry about the " + carName);
+        message.setFrom("8b10da001@smtp-brevo.com");
+        message.setTo(toEmail);
+        message.setSubject("Thanks for your interest in the " + carName);
         message.setText(
-                "Hi,\n\nThank you for your interest in the " + carName +
-                        ". We'll get back to you shortly.\n\n– Pete's Cars"
+                "Hi " + customerName + ",\n\n" +
+                        "Thanks for reaching out to Pete’s Cars about the " + carName + ".\n\n" +
+                        "We’ve received your inquiry and a member of our team will be in touch shortly to assist you.\n\n" +
+                        "In the meantime, feel free to explore more vehicles on our website or reply to this email with any additional questions.\n\n" +
+                        "We appreciate your interest!\n\n" +
+                        "Best regards,\n" +
+                        "Pete’s Cars\n" +
+                        "123 Peachtree St NE, Atlanta, GA\n" +
+                        "(555) 123-4567\n" +
+                        "petescars.netlify.app"
         );
 
         mailSender.send(message);
     }
+
 
 }
 
