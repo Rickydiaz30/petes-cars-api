@@ -14,7 +14,7 @@ public class MailService {
 
     public void sendInquiry(String subject, String body, String replyTo) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("8b10da001@smtp-brevo.com");  // ✅ Must match Brevo sender
+        message.setFrom("diazricky28@gmail.com");  // ✅ Must match Brevo sender
         message.setTo("diazricky28@gmail.com");       // ✅ You get the email
         message.setSubject(subject);
         message.setText(body);
