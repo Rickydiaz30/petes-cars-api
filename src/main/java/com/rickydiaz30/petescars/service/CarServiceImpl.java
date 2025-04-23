@@ -58,6 +58,9 @@ public class CarServiceImpl implements CarService{
         if(partialCar.getImageUrl() != null) {
             existingCar.setImageUrl(partialCar.getImageUrl());
         }
+        if (partialCar.getDescription() != null) {
+            existingCar.setDescription(partialCar.getDescription());
+        }
         return carRepository.save(existingCar);
     }
 
